@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Command line suite" duration-ms="15" started-at="2011-11-02T16:16:43Z" finished-at="2011-11-02T16:16:43Z">
+    <groups>
+    </groups>
+    <test name="Command line test" duration-ms="15" started-at="2011-11-02T16:16:43Z" finished-at="2011-11-02T16:16:43Z">
+      <class name="javateam2.AppTest">
+        <test-method status="PASS" signature="testApp()" name="testApp" duration-ms="15" started-at="2011-11-02T16:16:43Z" finished-at="2011-11-02T16:16:43Z">
+        </test-method>
+      </class>
+    </test>
+  </suite>
+</testng-results>
