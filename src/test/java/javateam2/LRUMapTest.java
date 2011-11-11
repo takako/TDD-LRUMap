@@ -5,32 +5,60 @@ import org.testng.annotations.Test;
 
 public class LRUMapTest {
 	@Test
-	public void testConstructor() {
-		LRUMap lruMap = new LRUMap(3);
+	public void testConstructorSize() {
+		LRUMap<Integer, String> lruMap = new LRUMap<Integer, String>(3);
 		assertEquals(new Integer(3), lruMap.size());
 	}
 	
 	@Test
+	public void testConstructorType1() {
+		LRUMap<Integer, String> lruMap = new LRUMap<Integer, String>(3);
+		lruMap.put(1, "1");
+		assertEquals("1", lruMap.get(1));
+	}
+	
+	@Test
+	public void testConstructorType2() {
+		LRUMap<String, Double> lruMap = new LRUMap<String, Double>(3);
+		lruMap.put("hoge", 1.5);
+		assertEquals(1.5, lruMap.get("hoge"));
+	}
+
+	
+	@Test
 	public void testPut() {
-		LRUMap lruMap = new LRUMap(3);
+		LRUMap<Integer, String> lruMap = new LRUMap<Integer, String>(3);
 		lruMap.put(1,"test001");
 		assertEquals("test001", lruMap.get(1));
 	}
 	
 	@Test
 	public void testSize() {
-		LRUMap lruMap = new LRUMap(1);
+		LRUMap<Integer, String> lruMap = new LRUMap<Integer, String>(1);
 		lruMap.put(1,"test002");
 		lruMap.put(2,"test003");
 		assertEquals(null, lruMap.get(1));		
 	}
 	@Test
 	public void testSize3() {
-		LRUMap lruMap = new LRUMap(2);
+		LRUMap<Integer, String> lruMap = new LRUMap<Integer, String>(2);
 		lruMap.put(1,"test002");
 		lruMap.put(2,"test003");
 		lruMap.put(3,"test004");
-		assertEquals("test002", lruMap.get(2));
+		assertEquals("test003", lruMap.get(2));
 	}
-	
+	@Test
+	public void testGetNull() {
+		LRUMap<Integer, String> lruMap = new LRUMap<Integer, String>(3);
+		lruMap.put(1,"1");
+		lruMap.put(2,"2");
+		lruMap.put(3,"3");
+		lruMap.get(1);
+		lruMap.get(2);
+		lruMap.put(4,"4");
+		assertEquals("1", lruMap.get(1));
+		assertEquals("2", lruMap.get(2));
+		assertEquals("4", lruMap.get(4));
+		assertEquals(null, lruMap.get(3));
+	}
 }

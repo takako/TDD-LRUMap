@@ -3,21 +3,29 @@ package javateam2;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class LRUMap {
+public class LRUMap<E, F> {
 	private Integer maxSize;
-	private HashMap<Integer, String> hashMap = new HashMap<Integer, String>();
-	//private ArrayList<Integer> LRUList = new ArrayList<Integer>();
+	private HashMap<E, F> hashMap = new HashMap<E, F>();
+	private ArrayList<E> LRUList = new ArrayList<E>();
+	
 	public LRUMap(Integer size){
 		maxSize = size;
 	}
 	public Integer size(){
 		return maxSize;
 	}
-	public void put(Integer key, String value){
-		hashMap.clear();
+	public void put(E key, F value){
+		if(LRUList.size() >= maxSize)
+		{
+			hashMap.remove(LRUList.get(0));
+			LRUList.remove(0);
+		}
+		LRUList.add(key);
 		hashMap.put(key, value);
 	}
-	public String get(Integer key){
+	public F get(E key){
+		LRUList.remove(0);
+		LRUList.add(key);
 		return hashMap.get(key);
 	}
 
