@@ -23,7 +23,6 @@ public class LRUMapTest {
 		lruMap.put("hoge", 1.5);
 		assertEquals(1.5, lruMap.get("hoge"));
 	}
-
 	
 	@Test
 	public void testPut() {
@@ -60,5 +59,25 @@ public class LRUMapTest {
 		assertEquals("2", lruMap.get(2));
 		assertEquals("4", lruMap.get(4));
 		assertEquals(null, lruMap.get(3));
+	}
+	@Test
+	public void testGetNull2() {
+		LRUMap<Integer, String> lruMap = new LRUMap<Integer, String>(3);
+		lruMap.put(1,"1");
+		lruMap.put(2,"2");
+		lruMap.put(3,"3");
+		lruMap.get(2);
+		assertEquals("1", lruMap.get(1));
+		assertEquals("2", lruMap.get(2));
+		assertEquals("3", lruMap.get(3));
+	}
+	@Test
+	public void testConstructorException() {
+		try {
+			LRUMap<Integer, String> lrumap = new LRUMap<Integer, String>(-1);
+			fail();
+		} catch (Exception e) {
+			assertTrue(true);
+		}
 	}
 }
