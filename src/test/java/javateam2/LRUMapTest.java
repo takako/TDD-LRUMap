@@ -1,5 +1,5 @@
 package javateam2;
-
+import java.util.*;
 import static org.testng.AssertJUnit.*;
 import org.testng.annotations.Test;
 
@@ -7,7 +7,7 @@ public class LRUMapTest {
 	@Test
 	public void testConstructorSize() {
 		LRUMap<Integer, String> lruMap = new LRUMap<Integer, String>(3);
-		assertEquals(new Integer(3), lruMap.size());
+		assertEquals(3, lruMap.size());
 	}
 	
 	@Test
@@ -78,6 +78,60 @@ public class LRUMapTest {
 			fail();
 		} catch (Exception e) {
 			assertTrue(true);
+			assertEquals("ÉTÉCÉYÇÕ1à»è„:input=-1", e.getMessage());
 		}
+	}
+	@Test
+	public void testPutSameKey() {
+		LRUMap<Integer, String> lruMap = new LRUMap<Integer, String>(3);
+		lruMap.put(2,"2");
+		lruMap.put(1,"first");
+		lruMap.put(1,"second");
+		lruMap.put(3,"3");
+		assertEquals("2", lruMap.get(2));
+		assertEquals("second", lruMap.get(1));
+	}
+	
+	@Test
+	public void testResize() {
+		LRUMap<Integer, String> lruMap =  new LRUMap<Integer, String>(3);
+		lruMap.put(1,"1st");
+		lruMap.put(2,"2nd");
+		lruMap.put(3,"3rd");
+		lruMap.resize(4);
+		assertEquals(4, lruMap.size());
+	}
+	@Test
+	public void testResize2() {
+		LRUMap<Integer, String> lruMap =  new LRUMap<Integer, String>(2);
+		lruMap.put(1,"1st");
+		lruMap.put(2,"2nd");
+		lruMap.resize(1);
+		assertEquals(1, lruMap.size());
+		assertEquals(null, lruMap.get(1));
+		assertEquals("2nd", lruMap.get(2));
+	} 
+	@Test
+	public void testResize3() {
+		LRUMap<Integer, String> lruMap =  new LRUMap<Integer, String>(3);
+		lruMap.put(1,"1st");
+		lruMap.put(2,"2nd");
+		lruMap.put(3,"3rd");
+		lruMap.resize(4);
+		lruMap.put(4, "4th");
+		assertEquals("1st", lruMap.get(1));
+		assertEquals("4th", lruMap.get(4));
+	}
+	@Test
+	public void testDiscardAsTime() {
+		LRUMap<Integer, String> lruMap =  new LRUMap<Integer, String>(3, 5);
+		lruMap.put(1,"1st");
+		lruMap.put(2,"2nd");
+		lruMap.put(3,"3rd");
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+		}
+		assertEquals(null, lruMap.get(1));			
 	}
 }

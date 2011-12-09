@@ -5,8 +5,7 @@
     <classes>
       <class name="javateam2.LRUMapTest">
         <methods>
-          <include name="testSize"/>
-          <include name="testGetNull"/>
+          <include name="testDiscardAsTime"/>
         </methods>
       </class>
     </classes>
