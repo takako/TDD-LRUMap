@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite hostname="hadoop04" name="javateam2.LRUMapTest" tests="14" failures="1" timestamp="2 Dec 2011 00:54:29 GMT" time="5.039" errors="0">
-  <testcase name="testConstructorException" time="0.016" classname="javateam2.LRUMapTest"/>
+<testsuite hostname="hadoop04" name="javateam2.LRUMapTest" tests="15" failures="1" timestamp="14 Dec 2011 07:22:03 GMT" time="3.04" errors="0">
+  <testcase name="testConstructorException" time="0.01" classname="javateam2.LRUMapTest"/>
   <testcase name="testConstructorSize" time="0.0" classname="javateam2.LRUMapTest"/>
   <testcase name="testConstructorType1" time="0.0" classname="javateam2.LRUMapTest"/>
-  <testcase name="testConstructorType2" time="0.0" classname="javateam2.LRUMapTest"/>
-  <testcase name="testDiscardAsTime" time="5.007" classname="javateam2.LRUMapTest">
-    <failure type="java.lang.AssertionError" message="expected:&amp;lt;null&amp;gt; but was:&amp;lt;1st&amp;gt;">
-      <![CDATA[java.lang.AssertionError: expected:<null> but was:<1st>
+  <testcase name="testConstructorType2" time="0.0010" classname="javateam2.LRUMapTest"/>
+  <testcase name="testDiscardWithTime" time="1.001" classname="javateam2.LRUMapTest"/>
+  <testcase name="testDiscardWithTime2" time="2.001" classname="javateam2.LRUMapTest">
+    <failure type="java.lang.AssertionError" message="expected:&amp;lt;null&amp;gt; but was:&amp;lt;2nd&amp;gt;">
+      <![CDATA[java.lang.AssertionError: expected:<null> but was:<2nd>
 	at org.testng.AssertJUnit.assertEquals(AssertJUnit.java:101)
 	at org.testng.AssertJUnit.assertEquals(AssertJUnit.java:108)
-	at javateam2.LRUMapTest.testDiscardAsTime(LRUMapTest.java:135)
+	at javateam2.LRUMapTest.testDiscardWithTime2(LRUMapTest.java:150)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
@@ -38,12 +39,12 @@
 ]]>
     </failure>
   </testcase>
-  <testcase name="testGetNull" time="0.0" classname="javateam2.LRUMapTest"/>
+  <testcase name="testGetNull" time="0.0010" classname="javateam2.LRUMapTest"/>
   <testcase name="testGetNull2" time="0.0" classname="javateam2.LRUMapTest"/>
-  <testcase name="testPut" time="0.0" classname="javateam2.LRUMapTest"/>
-  <testcase name="testPutSameKey" time="0.0" classname="javateam2.LRUMapTest"/>
-  <testcase name="testResize" time="0.0" classname="javateam2.LRUMapTest"/>
-  <testcase name="testResize2" time="0.016" classname="javateam2.LRUMapTest"/>
+  <testcase name="testPut" time="0.0010" classname="javateam2.LRUMapTest"/>
+  <testcase name="testPutSameKey" time="0.0010" classname="javateam2.LRUMapTest"/>
+  <testcase name="testResize" time="0.0010" classname="javateam2.LRUMapTest"/>
+  <testcase name="testResize2" time="0.0" classname="javateam2.LRUMapTest"/>
   <testcase name="testResize3" time="0.0" classname="javateam2.LRUMapTest"/>
   <testcase name="testSize" time="0.0" classname="javateam2.LRUMapTest"/>
   <testcase name="testSize3" time="0.0" classname="javateam2.LRUMapTest"/>

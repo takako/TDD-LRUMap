@@ -5,7 +5,7 @@
     <classes>
       <class name="javateam2.LRUMapTest">
         <methods>
-          <include name="testDiscardAsTime"/>
+          <include name="testDiscardWithTime2"/>
         </methods>
       </class>
     </classes>
