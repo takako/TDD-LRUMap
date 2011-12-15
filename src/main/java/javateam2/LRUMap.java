@@ -6,8 +6,7 @@ import java.util.HashMap;
 
 public class LRUMap<E, F> {
 	private int maxSize;
-	private long discardTime; //秒
-	//private long lastAccess;
+	private long discardTime; //ミリ秒
 	private Date lastAccess = null;
 	private HashMap<E, F> hashMap = new HashMap<E, F>();
 	// キーを管理するリスト 先頭から使われていない順に並んでいる
@@ -65,8 +64,11 @@ public class LRUMap<E, F> {
 	private void discardOld() {
 		if (this.discardTime != 0) {
 			Date now = new Date();
-			if (now.getTime() >= this.lastAccess.getTime() + this.discardTime) {
+			long elapsedTime = now.getTime() - this.lastAccess.getTime(); // 経過時間（ミリ秒）
+			//System.out.println("elapsedTime = "+elapsedTime); //デバッグ用
+			for (int i = 1; elapsedTime >= i * this.discardTime; i++) {
 				this.remove(this.LRUList.get(0));
+				//System.out.println("remove "+i); //デバッグ用
 			}
 			this.lastAccess = now;
 		}

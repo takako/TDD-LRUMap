@@ -133,6 +133,8 @@ public class LRUMapTest {
 		} catch (InterruptedException e) {
 		}
 		assertEquals(null, lruMap.get(1));
+		assertEquals("2nd", lruMap.get(2));
+		assertEquals("3rd", lruMap.get(3));
 	}
 
 	// 2倍の時間経過したら2つ消えるテスト
@@ -148,5 +150,24 @@ public class LRUMapTest {
 		}
 		assertEquals(null, lruMap.get(1));
 		assertEquals(null, lruMap.get(2));
+		assertEquals("3rd", lruMap.get(3));
 	}
+	
+	// 3倍の時間経過したら3つ消えるテスト
+		@Test
+		public void testDiscardWithTime3() {
+			LRUMap<Integer, String> lruMap = new LRUMap<Integer, String>(4, 1);
+			lruMap.put(1,"1st");
+			lruMap.put(2,"2nd");
+			lruMap.put(3,"3rd");
+			lruMap.put(4,"4th");
+			try {
+				Thread.sleep(3000);
+			} catch (InterruptedException e) {
+			}
+			assertEquals(null, lruMap.get(1));
+			assertEquals(null, lruMap.get(2));
+			assertEquals(null, lruMap.get(3));
+			assertEquals("4th", lruMap.get(4));
+		}
 }
